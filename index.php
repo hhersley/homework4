@@ -11,8 +11,7 @@
     <tr>
       <th>Food ID</th>
       <th>Item</th>
-      <th>Price</th>
-     <th>Additional Information</th>
+    
     </tr>
   </thead>
   <tbody>
@@ -29,7 +28,7 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "SELECT FoodID, Item, Price, Info from Menu";
+$sql = "SELECT FoodID, Item from Menu";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
@@ -39,8 +38,7 @@ if ($result->num_rows > 0) {
   <tr>
     <td><?=$row["FoodID"]?></td>
     <td><?=$row["Item"]?></td>
-    <td>$<?=$row["Price"]?></td>
-    <td><?=$row["Info"]?></td>
+ 
 
   </tr>
 <?php
