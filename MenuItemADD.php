@@ -17,7 +17,7 @@ if ($conn->connect_error) {
 
 
 
-   <form method="post" action="MenuItemADD.php">
+   <form method="post" action="MenuItemADDSAVE.php">
   <div class="mb-3">
     <label for="Item" class="form-label">Item</label>
     <input type="text" class="form-control" id="item" aria-describedby="nameHelp" name="iName">
