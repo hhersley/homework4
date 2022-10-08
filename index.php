@@ -52,7 +52,7 @@ $conn->close();
 ?>
       </tbody>
     </table>
-     <button href="MenuItemAdd.php" class="btn btn-primary">New Item</button>
+     <button href="MenuItemADD.php" class="btn btn-primary">New Item</button>
 
    
 
