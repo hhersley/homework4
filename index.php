@@ -52,23 +52,8 @@ $conn->close();
 ?>
       </tbody>
     </table>
+     <button href="MenuItemAdd.php" class="btn btn-primary">New Item</button>
+
    
-   <form method="post" action="MenuItemADD.php">
-  <div class="mb-3">
-    <label for="Item" class="form-label">Item</label>
-    <input type="text" class="form-control" id="item" aria-describedby="nameHelp" name="iName">
-    <div id="nameHelp" class="form-text">Enter the new item's name</div>
-   
-    <label for="Price" class="form-label">Price</label>
-    <input type="text" class="form-control" id="price" aria-describedby="nameHelp" name="iName">
-    <div id="nameHelp" class="form-text">Enter the new item's price</div>
-   
-    <label for="Info" class="form-label">Info</label>
-    <input type="text" class="form-control" id="info" aria-describedby="nameHelp" name="iName">
-    <div id="nameHelp" class="form-text">Enter any restrictions this fits (GF, Vegan, Vegetarian?</div>
-   
-  </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
-   
+
 </body>
