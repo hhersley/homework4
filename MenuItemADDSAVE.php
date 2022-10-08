@@ -19,7 +19,7 @@ if ($conn->connect_error) {
 $mItem = $_POST['mItem'];
 
 
-$sql = "insert into Menu (menuitem) value (?)";
+$sql = "insert into Menu (Item) value (?)";
 //echo $sql;
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("s", $mItem);
