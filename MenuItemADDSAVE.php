@@ -1,6 +1,7 @@
 
 <?php require_once('header.php'); ?>
-
+<body>
+  <?php
 $servername = "localhost";
 $username = "hahersle_homework4";
 $password = "Hello10513!!";
