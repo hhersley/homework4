@@ -18,12 +18,13 @@ if ($conn->connect_error) {
 
 $gName = $_POST['gName'];
 $gEmail = $_POST['gEmail'];
+  $gRoom = $_POST['gRoom'];
 
 
-$sql = "insert into Guest (Name, Email) value (?, ?)";
+$sql = "insert into Guest (Name, Email, Room) value (?, ?, ?)";
 //echo $sql;
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ss", $gName, $gEmail);
+    $stmt->bind_param("ssi", $gName, $gEmail, $gRoom);
     $stmt->execute();
 ?>
     
