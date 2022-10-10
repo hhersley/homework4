@@ -13,6 +13,7 @@
       <th>Guest ID</th>
       <th>Name</th>
       <th>Email</th>
+     <th>Room</th>
     
     </tr>
   </thead>
@@ -30,7 +31,7 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "SELECT GuestID, Name, Email from Guest";
+$sql = "SELECT GuestID, Name, Email, Room from Guest";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
@@ -41,6 +42,8 @@ if ($result->num_rows > 0) {
     <td><?=$row["GuestID"]?></td>
     <td><?=$row["Name"]?></td>
     <td><?=$row["Email"]?></td>
+       <td><?=$row["Room"]?></td>
+
 
  
 
