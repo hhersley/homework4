@@ -31,7 +31,7 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "SELECT FoodID, Item from Menu";
+$sql = "SELECT EmployeeID, Name, Phone from Employee";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
