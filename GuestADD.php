@@ -29,6 +29,11 @@ if ($conn->connect_error) {
     <input type="text" class="form-control" id="email" aria-describedby="nameHelp" name="gEmail">
     <div id="nameHelp" class="form-text">Enter the guest's email</div>
   </div>
+     <div class="mb-3">
+    <label for="Room" class="form-label">Room</label>
+    <input type="text" class="form-control" id="room" aria-describedby="nameHelp" name="gRoom">
+    <div id="nameHelp" class="form-text">Enter the guest's room number</div>
+  </div>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
    
