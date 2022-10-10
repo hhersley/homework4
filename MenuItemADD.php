@@ -29,6 +29,29 @@ if ($conn->connect_error) {
   <input type="text" class="form-control" id="price" aria-describedby="nameHelp" name="mPrice"> 
     <div id="nameHelp" class="form-text">Enter the new item's price</div>
 </div>
+     
+      <div class="mb-3">
+  <label for="EventList" class="form-label">Event</label>
+<select class="form-select" aria-label="Select Event" id="eventList" name="EventID">
+<?php
+    $eventSql = "select Name from Event order by Name";
+    $eventResult = $conn->query($eventSql);
+    while($eventRow = $eventResult->fetch_assoc()) {
+      if ($eventRow['EventID'] == $row['EventID']) {
+        $selText = " selected";
+      } else {
+        $selText = "";
+      }
+?>
+  <option value="<?=$eventRow['EventID']?>"<?=$selText?>><?=$eventRow['Name']?></option>
+<?php
+    }
+?>
+  
+  
+  
+  
+  
    
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>
