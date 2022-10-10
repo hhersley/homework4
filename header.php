@@ -18,12 +18,18 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="https://homework4.hahersley.oucreate.com/#">Home</a>
+          <a class="nav-link active" aria-current="page" href="https://homework4.hahersley.oucreate.com/#">Menu</a>
         </li>
-   
-            <li class="nav-item">
-          <a class="nav-link" href="https://www.barnesandnoble.com/">Link</a>
+         <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="https://homework4.hahersley.oucreate.com/Employee.php">Employee</a>
         </li>
+         <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="https://homework4.hahersley.oucreate.com/Event.php">Event</a>
+        </li>
+         <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="https://homework4.hahersley.oucreate.com/Guest.php">Guest</a>
+        </li>
+  
         
        
     
