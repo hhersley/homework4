@@ -6,7 +6,7 @@
 
   <body>
     
-    <h2>Menu</h2>
+    <h2>Employee</h2>
     
 <table class="table table-striped">
   <thead>
