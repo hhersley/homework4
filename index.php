@@ -12,6 +12,7 @@
       <th>Food ID</th>
       <th>Item</th>
      <th>Price</th>
+     <th>Event</th>
     
     </tr>
   </thead>
@@ -29,7 +30,7 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "SELECT FoodID, Item, Price from Menu";
+$sql = "SELECT FoodID, Item, Price, Name from Menu M Join Event E on M.EventID = E.EventID";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
@@ -40,6 +41,8 @@ if ($result->num_rows > 0) {
     <td><?=$row["FoodID"]?></td>
     <td><?=$row["Item"]?></td>
        <td>$<?=$row["Price"]?></td>
+          <td>$<?=$row["Name"]?></td>
+
 
  
 
