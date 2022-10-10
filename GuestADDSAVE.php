@@ -16,11 +16,11 @@ if ($conn->connect_error) {
 
 
 
-$mItem = $_POST['gName'];
-$gName = $_POST['gEmail'];
+$gName = $_POST['gName'];
+$gEmail = $_POST['gEmail'];
 
 
-$sql = "insert into Menu (Name), (Email) value (?) (?)";
+$sql = "insert into Menu (Name), (Email) value (??)";
 //echo $sql;
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("ss", $gName, $gEmail);
