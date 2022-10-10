@@ -41,7 +41,7 @@ if ($result->num_rows > 0) {
     <td><?=$row["FoodID"]?></td>
     <td><?=$row["Item"]?></td>
        <td>$<?=$row["Price"]?></td>
-          <td>$<?=$row["Name"]?></td>
+          <td><?=$row["Name"]?></td>
 
 
  
