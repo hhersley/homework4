@@ -20,7 +20,7 @@ $gName = $_POST['gName'];
 $gEmail = $_POST['gEmail'];
 
 
-$sql = "insert into Guest (Name), (Email) value (??)";
+$sql = "insert into Guest (Name, Email) value (?, ?)";
 //echo $sql;
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("ss", $gName, $gEmail);
