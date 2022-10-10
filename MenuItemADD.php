@@ -24,12 +24,10 @@ if ($conn->connect_error) {
     <div id="nameHelp" class="form-text">Enter the new item's name</div>
      </div>
     <div class="input-group mb-3">
-          <label for="Price" class="form-label">Pric
-            e</label> <br>
+          <label for="Price" class="form-label">Price</label> 
   <span class="input-group-text">$</span>
-  <input type="text" class="form-control" id="price" aria-describedby="nameHelp" name="mPrice"> <br>
-    <div id="nameHelp" class="form-text">
-      Enter the new item's price</div>
+  <input type="text" class="form-control" id="price" aria-describedby="nameHelp" name="mPrice"> 
+    <div id="nameHelp" class="form-text">Enter the new item's price</div>
 </div>
    
   </div>
