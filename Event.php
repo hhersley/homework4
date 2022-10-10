@@ -4,7 +4,7 @@
 
   <body>
     
-    <h2>Menu</h2>
+    <h2>Event</h2>
     
 <table class="table table-striped">
   <thead>
