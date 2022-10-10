@@ -17,12 +17,13 @@ if ($conn->connect_error) {
 
 
 $mItem = $_POST['mItem'];
+  $mPrice = $_POST['mPrice'];
 
 
-$sql = "insert into Menu (Item) value (?)";
+$sql = "insert into Menu (Item, Price) value (?, ?)";
 //echo $sql;
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("s", $mItem);
+    $stmt->bind_param("si", $mItem, $mPrice);
     $stmt->execute();
 ?>
     
