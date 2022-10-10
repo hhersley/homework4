@@ -23,7 +23,7 @@ $mItem = $_POST['mItem'];
 $sql = "insert into Menu (Item, Price) value (?, ?)";
 //echo $sql;
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("si", $mItem, $mPrice);
+    $stmt->bind_param("ss", $mItem, $mPrice);
     $stmt->execute();
 ?>
     
