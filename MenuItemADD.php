@@ -43,7 +43,7 @@ if ($conn->connect_error) {
         $selText = "";
       }
 ?>
-  <option value="<?=$eventRow['EventID']?>"<?=$selText?>><?=$eventRow['Name']?></option>
+  <option value="<?=$eventRow['EventID']?>"<?=$selText?><?=$eventRow['Name']?></option>
 <?php
     }
 ?>
