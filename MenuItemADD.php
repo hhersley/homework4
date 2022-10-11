@@ -38,12 +38,12 @@ if ($conn->connect_error) {
     $eventResult = $conn->query($eventSql);
     while($eventRow = $eventResult->fetch_assoc()) {
       if ($eventRow['EventID'] == $row['EventID']) {
-        $selText = "";
+        $selText = "selected";
       } else {
         $selText = "";
       }
 ?>
-  <option value=<?=$eventRow['EventID']?><?=$selText?><?=$eventRow['Name']?></option>
+  <option value="<?=$eventRow['EventID']?>"<?=$selText?>><?=$eventRow['Name']?></option>
 <?php
     }
 ?>
