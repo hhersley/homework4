@@ -28,7 +28,6 @@ if ($conn->connect_error) {
   <input type="text" id="datepicker" name="datepicker" value="Date"/>
        <div id="nameHelp" class="form-text">Enter the new event's date (YYYY-MM-DD)</div>
      </div>
-</form>
 </div>
      
       <div class="mb-3">
