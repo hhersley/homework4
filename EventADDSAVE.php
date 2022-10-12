@@ -16,13 +16,13 @@ if ($conn->connect_error) {
 
 
 $eName = $_POST['eName'];
-  $eDate = $_POST['Datepicker'];
+  $eDate = $_POST['eDate'];
 $empID = $_POST['EmployeeID'];
 
 $sql = "insert into Event (Name, Date, EmployeeID) value (?, ?, ?)";
 //echo $sql;
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("sdi", $eName, $eDate, $empID);
+    $stmt->bind_param("ssi", $eName, $eDate, $empID);
     $stmt->execute();
 ?>
     
