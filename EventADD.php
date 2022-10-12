@@ -23,10 +23,11 @@ if ($conn->connect_error) {
     <input type="text" class="form-control" id="name" aria-describedby="nameHelp" name="eName">
     <div id="nameHelp" class="form-text">Enter the new event's name</div>
      </div>
-    <div class="input-group mb-3">
-          <label for="Date" class="form-label">Date</label> 
-  <input type="text" id="datepicker" name="datepicker" value="Date"/>
-       <div id="nameHelp" class="form-text">Enter the new event's date (YYYY-MM-DD)</div>
+    <div class="input-group mb-3"> 
+      <label for="Date" class="form-label">Date</label>
+    <input type="text" class="form-control" id="date" aria-describedby="nameHelp" name="eDate">
+    <div id="nameHelp" class="form-text">Enter the new event's date (YYYY-MM-DD)</div>
+     </div>
      </div>
 </div>
      
