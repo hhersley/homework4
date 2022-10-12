@@ -16,7 +16,7 @@ if ($conn->connect_error) {
 
 
 $eName = $_POST['eName'];
-  $eDate = $_POST['eDate'];
+  $eDate = $_POST['Datepicker'];
 $empID = $_POST['EmployeeID'];
 
 $sql = "insert into Event (Name, Date, EmployeeID) value (?, ?, ?)";
