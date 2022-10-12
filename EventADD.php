@@ -25,8 +25,8 @@ if ($conn->connect_error) {
      </div>
     <div class="input-group mb-3">
           <label for="Date" class="form-label">Date</label> 
-  <input type="Y-m-d" class="form-control" id="date" aria-describedby="nameHelp" name="eDate"> 
-    <div id="nameHelp" class="form-text">Enter the event's date (YYYY-MM-DD)</div>
+  <input type="text" id="datepicker" name="datepicker" value="Date"/>
+</form>
 </div>
      
       <div class="mb-3">
