@@ -30,7 +30,7 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "SELECT EventID, E.Name, Date, emp.Name from Event E join Employee emp on E.EmployeeID join emp.EmployeeID";
+$sql = "SELECT EventID, E.Name, Date, P.Name, EmployeeID from Event E join Employee P on E.EmployeeID = P.EmployeeID";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
@@ -41,7 +41,7 @@ if ($result->num_rows > 0) {
     <td><?=$row["EventID"]?></td>
     <td><?=$row["E.Name"]?></td>
      <td><?=$row["Date"]?></td>
-     <td><?=$row["emp.Name"]?></td>
+     <td><?=$row["P.Name"]?></td>
 
 
   </tr>
