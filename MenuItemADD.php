@@ -50,7 +50,7 @@ if ($conn->connect_error) {
   
   
   
-  
+        </select>
   
    
   </div>
