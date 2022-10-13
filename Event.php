@@ -41,7 +41,7 @@ if ($result->num_rows > 0) {
     <td><?=$row["EventID"]?></td>
     <td><?=$row["Name"]?></td>
      <td><?=$row["Date"]?></td>
-     <td><?=$row["P.Name"]?></td>
+     <td><?=$row["Name"]?></td>
 
 
   </tr>
