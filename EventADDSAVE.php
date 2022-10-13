@@ -19,7 +19,7 @@ $eName = $_POST['eName'];
   $eDate = $_POST['eDate'];
 $empID = $_POST['EmployeeID'];
 
-$sql = "insert into Event (Name, Date, EmployeeID) value (?, ?, ?)";
+$sql = "insert into Event (EName, Date, EmployeeID) value (?, ?, ?)";
 //echo $sql;
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("ssi", $eName, $eDate, $empID);
