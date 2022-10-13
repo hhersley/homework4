@@ -34,7 +34,7 @@ if ($conn->connect_error) {
   <label for="EventList" class="form-label">Event</label>
 <select class="form-select" aria-label="Select Event" id="eventList" name="EventID">
 <?php
-    $eventSql = "select Name, EventID from Event order by Name";
+    $eventSql = "select EName, EventID from Event order by EName";
     $eventResult = $conn->query($eventSql);
     while($eventRow = $eventResult->fetch_assoc()) {
       if ($eventRow['EventID'] == $row['EventID']) {
@@ -43,7 +43,7 @@ if ($conn->connect_error) {
         $selText = "";
       }
 ?>
-  <option value="<?=$eventRow['EventID']?>"<?=$selText?>><?=$eventRow['Name']?></option>
+  <option value="<?=$eventRow['EventID']?>"<?=$selText?>><?=$eventRow['EName']?></option>
 <?php
     }
 ?>
