@@ -39,7 +39,7 @@ if ($result->num_rows > 0) {
 ?>
   <tr>
     <td><?=$row["EventID"]?></td>
-    <td><?=$row["E.Name"]?></td>
+    <td><?=$row["Name"]?></td>
      <td><?=$row["Date"]?></td>
      <td><?=$row["P.Name"]?></td>
 
