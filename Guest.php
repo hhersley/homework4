@@ -95,7 +95,7 @@ if ($result->num_rows > 0) {
                           <input type="text" class="form-control" id="editGuest<?=$row["GuestID"]?>Room" aria-describedby="editGuest<?=$row["GuestID"]?>Help" name="gRoom" value="<?=$row['Room']?>">
                           <div id="editGuest<?=$row["GuestID"]?>Help" class="form-text">Enter the guest's room number.</div>
                         </div>
-                        <input type="hidden" name="iid" value="<?=$row['GuestID']?>">
+                        <input type="hidden" name="gid" value="<?=$row['GuestID']?>">
                         <input type="hidden" name="saveType" value="Edit">
                         <input type="submit" class="btn btn-primary" value="Submit">
                       </form>
