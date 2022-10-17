@@ -36,9 +36,9 @@ if ($conn->connect_error) {
    if ($_SERVER["REQUEST_METHOD"] == "POST") {
   switch ($_POST['saveType']) {
     case 'Edit':
-      $sqlEdit = "update Employee set Name=? where EmployeeID=?";
+      $sqlEdit = "update Employee set Name=?, Phone=? where EmployeeID=?";
       $stmtEdit = $conn->prepare($sqlEdit);
-      $stmtEdit->bind_param("sii", $_POST['empName'], $_POST['empid'], $_POST['empPhone']);
+      $stmtEdit->bind_param("sii", $_POST['empName'], $_POST['empPhone'], $_POST['empid']);
       $stmtEdit->execute();
       echo '<div class="alert alert-success" role="alert">Employee edited.</div>';
       break;
@@ -65,24 +65,29 @@ if ($result->num_rows > 0) {
     <td><?=$row["Phone"]?></td>
 
  <td>
-              <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#editInstructor<?=$row["instructor_id"]?>">
+              <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#editEmployee<?=$row["EmployeeID"]?>">
                 Edit
               </button>
-              <div class="modal fade" id="editInstructor<?=$row["instructor_id"]?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="editInstructor<?=$row["instructor_id"]?>Label" aria-hidden="true">
+              <div class="modal fade" id="editEmployee<?=$row["EmployeeID"]?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="editEmployee<?=$row["EmployeeID"]?>Label" aria-hidden="true">
                 <div class="modal-dialog">
                   <div class="modal-content">
                     <div class="modal-header">
-                      <h1 class="modal-title fs-5" id="editInstructor<?=$row["instructor_id"]?>Label">Edit Instructor</h1>
+                      <h1 class="modal-title fs-5" id="editEmployee<?=$row["EmployeeID"]?>Label">Edit Employee</h1>
                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                       <form method="post" action="">
                         <div class="mb-3">
-                          <label for="editInstructor<?=$row["instructor_id"]?>Name" class="form-label">Name</label>
-                          <input type="text" class="form-control" id="editInstructor<?=$row["instructor_id"]?>Name" aria-describedby="editInstructor<?=$row["instructor_id"]?>Help" name="iName" value="<?=$row['instructor_name']?>">
-                          <div id="editInstructor<?=$row["instructor_id"]?>Help" class="form-text">Enter the instructor's name.</div>
+                          <label for="editEmployee<?=$row["EmployeeID"]?>Name" class="form-label">Name</label>
+                          <input type="text" class="form-control" id="editEmployee<?=$row["EmployeeID"]?>Name" aria-describedby="editEmployee<?=$row["EmployeeID"]?>Help" name="empName" value="<?=$row['Name']?>">
+                          <div id="editEmployee<?=$row["EmployeeID"]?>Help" class="form-text">Enter the employee's name.</div>
                         </div>
-                        <input type="hidden" name="iid" value="<?=$row['instructor_id']?>">
+                       <div class="mb-3">
+                          <label for="editEmployee<?=$row["EmployeeID"]?>Phone" class="form-label">Phone</label>
+                          <input type="text" class="form-control" id="editEmployee<?=$row["EmployeeID"]?>Phone" aria-describedby="editEmployee<?=$row["EmployeeID"]?>Help" name="empPhone" value="<?=$row['Phone']?>">
+                          <div id="editEmployee<?=$row["EmployeeID"]?>Help" class="form-text">Enter the employee's phone number.</div>
+                        </div>
+                        <input type="hidden" name="empid" value="<?=$row['EmployeeID']?>">
                         <input type="hidden" name="saveType" value="Edit">
                         <input type="submit" class="btn btn-primary" value="Submit">
                       </form>
@@ -111,6 +116,7 @@ $conn->close();
     </table>
      <a href="https://homework4.hahersley.oucreate.com/EmployeeADD.php" class="btn btn-primary">New Employee</a>
 
-   
+          <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+
 
 </body>
