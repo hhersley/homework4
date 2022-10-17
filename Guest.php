@@ -132,16 +132,16 @@ $conn->close();
 ?>
       </tbody>
     </table>
-  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addInstructor">
-        Add New
+  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addguest">
+        New Guest
       </button>
 
       <!-- Modal -->
-      <div class="modal fade" id="addInstructor" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="addInstructorLabel" aria-hidden="true">
+      <div class="modal fade" id="addGuest" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="addGuestLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h1 class="modal-title fs-5" id="addInstructorLabel">Add Instructor</h1>
+              <h1 class="modal-title fs-5" id="addGuestLabel">Add Guest</h1>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
