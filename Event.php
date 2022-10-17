@@ -89,7 +89,7 @@ if ($result->num_rows > 0) {
                         </div>
                        <div class="mb-3">
                           <label for="editEvent<?=$row["EventID"]?>Date" class="form-label">Date</label>
-                          <input type="text" class="form-control" id="editEvent<?=$row["EventID"]?>Date" aria-describedby="editEvent<?=$row["EventID"]?>Help" name="Date" value="<?=$row['Date']?>">
+                          <input type="text" class="form-control" id="editEvent<?=$row["EventID"]?>Date" aria-describedby="editEvent<?=$row["EventID"]?>Help" name="eDate" value="<?=$row['Date']?>">
                           <div id="editEvent<?=$row["EventID"]?>Help" class="form-text">Enter the event's date.</div>
                         </div>
                        
@@ -99,7 +99,7 @@ if ($result->num_rows > 0) {
               
       <div class="mb-3">
   <label for="EmployeeList" class="form-label">Employee</label>
-<select class="form-select" aria-label="Select Employee" id="employeeList" name="EmployeeID">
+<select class="form-select" aria-label="Select Employee" id="employeeList" name="eempid" value="<?=$row['EmployeeID']?>">
 <?php
     $eventSql = "select * from Employee order by Name";
     $eventResult = $conn->query($eventSql);
@@ -128,7 +128,7 @@ if ($result->num_rows > 0) {
             </td>
  <td>
               <form method="post" action="">
-                <input type="hidden" name="gid" value="<?=$row["GuestID"]?>" />
+                <input type="hidden" name="eid" value="<?=$row["EventID"]?>" />
                 <input type="hidden" name="saveType" value="Delete">
                 <input type="submit" class="btn" onclick="return confirm('Are you sure?')" value="Delete">
               </form>
