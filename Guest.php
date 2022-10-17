@@ -132,7 +132,7 @@ $conn->close();
 ?>
       </tbody>
     </table>
-  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addguest">
+  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addGuest">
         New Guest
       </button>
 
