@@ -36,7 +36,7 @@ if ($conn->connect_error) {
   switch ($_POST['saveType']) {
    case 'Add':
       $sqlAdd = "insert into Guest (Name, Email, Room) value (?, ?, ?)";
-      $stmtAdd = $conn->prepare($sqlADD);
+      $stmtAdd = $conn->prepare($sqlAdd);
     $stmtAdd->bind_param("ssi", $_POST['gName'], $_POST['gEmail'], $_POST['gRoom']);
     $stmtAdd->execute();
       echo '<div class="alert alert-success" role="alert">New Guest added.</div>';
