@@ -36,7 +36,7 @@ if ($conn->connect_error) {
   switch ($_POST['saveType']) {
 
     case 'Edit':
-      $sqlEdit = "update Guest set Name=? where GuestID=?";
+      $sqlEdit = "update Guest set Name=?, Email=?, Room=? where GuestID=?";
       $stmtEdit = $conn->prepare($sqlEdit);
       $stmtEdit->bind_param("sisi", $_POST['gName'], $_POST['gid'], $_POST['gEmail'], $_POST['gRoom']);
       $stmtEdit->execute();
