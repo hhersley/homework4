@@ -34,7 +34,13 @@ if ($conn->connect_error) {
 
    if ($_SERVER["REQUEST_METHOD"] == "POST") {
   switch ($_POST['saveType']) {
-
+   case 'Add':
+      $sqlAdd = "insert into Guest (Name, Email, Room) value (?, ?, ?)";
+      $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ssi", $gName, $gEmail, $gRoom);
+    $stmt->execute();
+      echo '<div class="alert alert-success" role="alert">New Guest added.</div>';
+      break;
     case 'Edit':
       $sqlEdit = "update Guest set Name=?, Email=?, Room=? where GuestID=?";
       $stmtEdit = $conn->prepare($sqlEdit);
@@ -126,8 +132,52 @@ $conn->close();
 ?>
       </tbody>
     </table>
-     <a href="https://homework4.hahersley.oucreate.com/GuestADD.php" class="btn btn-primary">New Guest</a>
+  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addInstructor">
+        Add New
+      </button>
 
+      <!-- Modal -->
+      <div class="modal fade" id="addInstructor" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="addInstructorLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="addInstructorLabel">Add Instructor</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form method="post" action="">
+                <div class="mb-3">
+    <label for="Name" class="form-label">Name</label>
+    <input type="text" class="form-control" id="Name" aria-describedby="nameHelp" name="gName">
+    <div id="nameHelp" class="form-text">Enter the Guest's name</div>
+  </div>
+    
+       <div class="mb-3">
+    <label for="Email" class="form-label">Email</label>
+    <input type="text" class="form-control" id="email" aria-describedby="nameHelp" name="gEmail">
+    <div id="nameHelp" class="form-text">Enter the guest's email</div>
+  </div>
+     <div class="mb-3">
+    <label for="Room" class="form-label">Room</label>
+    <input type="text" class="form-control" id="room" aria-describedby="nameHelp" name="gRoom">
+    <div id="nameHelp" class="form-text">Enter the guest's room number</div>
+  </div>
+               
+                <input type="hidden" name="saveType" value="Add">
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+               
+               
+               
+               
+               
+               
+               
        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 
 
