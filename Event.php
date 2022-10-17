@@ -117,7 +117,7 @@ if ($result->num_rows > 0) {
         </select>
   </div>
                       
-                        <input type="hidden" name="gid" value="<?=$row['GuestID']?>">
+                        <input type="hidden" name="eid" value="<?=$row['EventID']?>">
                         <input type="hidden" name="saveType" value="Edit">
                         <input type="submit" class="btn btn-primary" value="Submit">
                       </form>
