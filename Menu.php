@@ -82,13 +82,13 @@ if ($result->num_rows > 0) {
                     <div class="modal-body">
                       <form method="post" action="">
                         <div class="mb-3">
-                          <label for="editMenu<?=$row["EventID"]?>mItem" class="form-label">Item</label>
+                          <label for="editMenu<?=$row["FoodID"]?>Item" class="form-label">Item</label>
                           <input type="text" class="form-control" id="editMenu<?=$row["FoodID"]?>Item" aria-describedby="editMenu<?=$row["FoodID"]?>Help" name="mItem" value="<?=$row['Item']?>">
                           <div id="editMenu<?=$row["FoodID"]?>Help" class="form-text">Enter the item's name.</div>
                         </div>
                          
  <div class="mb-3">
-                          <label for="editMenu<?=$row["EventID"]?>mPrice" class="form-label">Price</label>
+                          <label for="editMenu<?=$row["FoodID"]?>Price" class="form-label">Price</label>
                           <input type="text" class="form-control" id="editMenu<?=$row["FoodID"]?>Price" aria-describedby="editMenu<?=$row["FoodID"]?>Help" name="mPrice" value="<?=$row['Price']?>">
                           <div id="editMenu<?=$row["FoodID"]?>Help" class="form-text">Enter the item's Price.</div>
                        
