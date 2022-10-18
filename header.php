@@ -37,7 +37,7 @@
       </ul>
       
        
-         <img id="img1" src="" class="rounded float-end" alt="tiny picture">
+         <img id="img1" src="https://dejpknyizje2n.cloudfront.net/svgcustom/clipart/preview/dragonfly-8955-17765-550x550.png" class="rounded float-end" alt="tiny picture">
     </div>
   </div>
 </nav>
