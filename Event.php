@@ -152,7 +152,17 @@ $conn->close();
       </tbody>
     </table>
 
-
+  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addEvent">
+        New Event
+      </button>
+      <!-- Modal -->
+      <div class="modal fade" id="addEvent" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="addEventLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="addGuestLabel">Add Guest</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
 
 
 
