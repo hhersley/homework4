@@ -165,7 +165,7 @@ $conn->close();
             <div class="modal-body">
               <form method="post" action="">
                 <div class="mb-3">
-    <label for="EName" class="form-label"> EventName</label>
+    <label for="EName" class="form-label"> Event Name</label>
     <input type="text" class="form-control" id="name" aria-describedby="nameHelp" name="eName">
     <div id="nameHelp" class="form-text">Enter the Event's name</div>
   </div>
@@ -177,7 +177,7 @@ $conn->close();
         
         
   <div class="mb-3">
-  <label for="EmployeeList" class="form-label">Employee</label>
+  <label for="EmployeeList" class="form-label">Which Employee will be in charge of this event</label>
 <select class="form-select" aria-label="Select Employee" id="employeeList" name="eEmpID" value="<?=$row['EmployeeID']?>">
 <?php
     $eventSql = "select * from Employee order by Name";
