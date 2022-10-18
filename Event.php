@@ -35,7 +35,7 @@ if ($conn->connect_error) {
       if ($_SERVER["REQUEST_METHOD"] == "POST") {
   switch ($_POST['saveType']) {
   case 'Add':
-      $sqlAdd = "insert into Event (EName, Date, EmoloyeeID) value (?, ?, ?)";
+      $sqlAdd = "insert into Event (EName, Date, EmployeeID) value (?, ?, ?)";
       $stmtAdd = $conn->prepare($sqlAdd);
     $stmtAdd->bind_param("ssi", $_POST['eName'], $_POST['eDate'], $_POST['eEmpID']);
     $stmtAdd->execute();
