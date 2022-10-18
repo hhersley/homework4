@@ -163,8 +163,19 @@ $conn->close();
               <h1 class="modal-title fs-5" id="addEventLabel">Add Event</h1>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
+<div class="modal-body">
+   <form method="post" action="">
+       <div class="mb-3">
+               <label for="EName" class="form-label">Name</label>
+               <input type="text" class="form-control" id="name" aria-describedby="nameHelp" name="eName">
+               <div id="nameHelp" class="form-text">Enter the event's name</div>
+       </div>
 
-
+       <div class="mb-3">
+               <label for="Date" class="form-label">Date</label>
+               <input type="text" class="form-control" id="date" aria-describedby="nameHelp" name="eDate">
+               <div id="nameHelp" class="form-text">Enter the event's email</div>
+       </div>
 
 
           <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
