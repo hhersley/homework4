@@ -110,7 +110,8 @@ if ($result->num_rows > 0) {
                                 } else {
                                 $selText = "";
                                 }
-                                
+                                ?>
+
                                 <option value="<?=$eventRow['EmployeeID']?>"<?=$selText?>><?=$eventRow['Name']?></option>
                              
                            ?>
