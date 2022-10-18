@@ -37,7 +37,7 @@ if ($conn->connect_error) {
   case 'Add':
       $sqlAdd = "insert into Event (EName, Date, EmployeeID) value (?, ?, ?)";
       $stmtAdd = $conn->prepare($sqlAdd);
-    $stmtAdd->bind_param("ssi", $_POST['eName'], $_POST['eDate'], $_POST['eEmpID']);
+    $stmtAdd->bind_param("ssi", $_POST['eName'], $_POST['eDate'], $_POST['eempid']);
     $stmtAdd->execute();
       echo '<div class="alert alert-success" role="alert">New Event added.</div>';
       break;
@@ -177,6 +177,26 @@ $conn->close();
                <div id="nameHelp" class="form-text">Enter the event's email</div>
        </div>
      
+     
+        <div class="mb-3">
+                            <label for="EmployeeList" class="form-label">Employee</label>
+                            <select class="form-select" aria-label="Select Employee" id="employeeList" name="eempid" value="<?=$row['EmployeeID']?>">
+                          <?php
+                              $eventSql = "select * from Employee order by Name";
+                              $eventResult = $conn->query($eventSql);
+                              while($eventRow = $eventResult->fetch_assoc()) {
+                                if ($eventRow['EmployeeID'] == $row['EmployeeID']) {
+                                  $selText = " selected";
+                                } else {
+                                  $selText = "";
+                                }
+                         ?>
+                               <option value="<?=$eventRow['EmployeeID']?>"<?=$selText?>><?=$eventRow['Name']?></option>
+                         <?php
+                              }
+                         ?>
+                           </select>
+                       </div>
      
    
      
