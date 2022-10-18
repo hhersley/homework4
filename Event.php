@@ -174,7 +174,7 @@ $conn->close();
        <div class="mb-3">
                <label for="Date" class="form-label">Date</label>
                <input type="text" class="form-control" id="date" aria-describedby="nameHelp" name="eDate">
-               <div id="nameHelp" class="form-text">Enter the event's email</div>
+               <div id="nameHelp" class="form-text">Enter the event's date (YYYY-MM-DD)</div>
        </div>
      
      
