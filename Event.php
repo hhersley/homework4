@@ -103,25 +103,25 @@ if ($result->num_rows > 0) {
 
 
 
-          <div class="mb-3">
-      <label for="EmployeeList" class="form-label">Employee</label>
-    <select class="form-select" aria-label="Select Employee" id="employeeList" name="eempid" value="<?=$row['EmployeeID']?>">
-    <?php
-        $eventSql = "select * from Employee order by Name";
-        $eventResult = $conn->query($eventSql);
-        while($eventRow = $eventResult->fetch_assoc()) {
-          if ($eventRow['EmployeeID'] == $row['EmployeeID']) {
-            $selText = " selected";
-          } else {
-            $selText = "";
-          }
-    ?>
-      <option value="<?=$eventRow['EmployeeID']?>"<?=$selText?>><?=$eventRow['Name']?></option>
-    <?php
-        }
-    ?>
-            </select>
-      </div>
+                       <div class="mb-3">
+                            <label for="EmployeeList" class="form-label">Employee</label>
+                            <select class="form-select" aria-label="Select Employee" id="employeeList" name="eempid" value="<?=$row['EmployeeID']?>">
+                          <?php
+                              $eventSql = "select * from Employee order by Name";
+                              $eventResult = $conn->query($eventSql);
+                              while($eventRow = $eventResult->fetch_assoc()) {
+                                if ($eventRow['EmployeeID'] == $row['EmployeeID']) {
+                                  $selText = " selected";
+                                } else {
+                                  $selText = "";
+                                }
+                         ?>
+                               <option value="<?=$eventRow['EmployeeID']?>"<?=$selText?>><?=$eventRow['Name']?></option>
+                         <?php
+                              }
+                         ?>
+                           </select>
+                       </div>
 
                             <input type="hidden" name="eid" value="<?=$row['EventID']?>">
                             <input type="hidden" name="saveType" value="Edit">
@@ -177,6 +177,42 @@ $conn->close();
                <div id="nameHelp" class="form-text">Enter the event's email</div>
        </div>
 
+       <div class="mb-3">
+                            <label for="EmployeeList" class="form-label">Employee</label>
+                            <select class="form-select" aria-label="Select Employee" id="employeeList" name="eEmpid" value="<?=$row['EmployeeID']?>">
+                          <?php
+                              $eventSql = "select * from Employee order by Name";
+                              $eventResult = $conn->query($eventSql);
+                              while($eventRow = $eventResult->fetch_assoc()) {
+                                if ($eventRow['EmployeeID'] == $row['EmployeeID']) {
+                                  $selText = " selected";
+                                } else {
+                                  $selText = "";
+                                }
+                         ?>
+                               <option value="<?=$eventRow['EmployeeID']?>"<?=$selText?>><?=$eventRow['Name']?></option>
+                         <?php
+                              }
+                         ?>
+                           </select>
+        </div>
+                <input type="hidden" name="saveType" value="Add">
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+               
+                            
+     
+     
+     
+     
+     
+     
+     
 
           <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 
