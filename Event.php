@@ -34,7 +34,13 @@ if ($conn->connect_error) {
 
       if ($_SERVER["REQUEST_METHOD"] == "POST") {
   switch ($_POST['saveType']) {
-
+  case 'Add':
+      $sqlAdd = "insert into Event (EName, Date, EmoloyeeID) value (?, ?, ?)";
+      $stmtAdd = $conn->prepare($sqlAdd);
+    $stmtAdd->bind_param("ssi", $_POST['eName'], $_POST['eDate'], $_POST['eEmpID']);
+    $stmtAdd->execute();
+      echo '<div class="alert alert-success" role="alert">New Event added.</div>';
+      break;
     case 'Edit':
       $sqlEdit = "update Event set EName=?, Date=?, EmployeeID=? where EventID=?";
       $stmtEdit = $conn->prepare($sqlEdit);
@@ -144,7 +150,67 @@ $conn->close();
 ?>
       </tbody>
     </table>
-     <a href="https://homework4.hahersley.oucreate.com/EventADD.php" class="btn btn-primary">New Event</a>
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addEvent">
+        New Event
+      </button>
+
+      <!-- Modal -->
+      <div class="modal fade" id="addEvent" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="addEventLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="addEventLabel">Add Event</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form method="post" action="">
+                <div class="mb-3">
+    <label for="EName" class="form-label"> EventName</label>
+    <input type="text" class="form-control" id="name" aria-describedby="nameHelp" name="eName">
+    <div id="nameHelp" class="form-text">Enter the Event's name</div>
+  </div>
+    
+       <div class="mb-3">
+    <label for="Date" class="form-label">Date</label>
+    <input type="text" class="form-control" id="date" aria-describedby="nameHelp" name="eDate">
+    <div id="nameHelp" class="form-text">Enter the event's date</div>
+        
+        
+  <div class="mb-3">
+  <label for="EmployeeList" class="form-label">Employee</label>
+<select class="form-select" aria-label="Select Employee" id="employeeList" name="eEmpID" value="<?=$row['EmployeeID']?>">
+<?php
+    $eventSql = "select * from Employee order by Name";
+    $eventResult = $conn->query($eventSql);
+    while($eventRow = $eventResult->fetch_assoc()) {
+      if ($eventRow['EmployeeID'] == $row['EmployeeID']) {
+        $selText = " selected";
+      } else {
+        $selText = "";
+      }
+?>
+  <option value="<?=$eventRow['EmployeeID']?>"<?=$selText?>><?=$eventRow['Name']?></option>
+<?php
+    }
+?>
+        </select>
+  
+   
+  </div>
+               
+                <input type="hidden" name="saveType" value="Add">
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
 
           <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 
