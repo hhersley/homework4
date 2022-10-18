@@ -76,7 +76,62 @@ if ($result->num_rows > 0) {
      <td><?=$row["Date"]?></td>
      <td><?=$row["Name"]?></td>
      <td>
-                
+                  <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#editEvent<?=$row["EventID"]?>">
+                    Edit
+                  </button>
+                  <div class="modal fade" id="editEvent<?=$row["EventID"]?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="editEvent<?=$row["EventID"]?>Label" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h1 class="modal-title fs-5" id="editEvent<?=$row["EventID"]?>Label">Edit Event</h1>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                          <form method="post" action="">
+                            <div class="mb-3">
+                              <label for="editEvent<?=$row["EventID"]?>EName" class="form-label">Event Name</label>
+                              <input type="text" class="form-control" id="editEvent<?=$row["EventID"]?>EName" aria-describedby="editEvent<?=$row["EventID"]?>Help" name="eName" value="<?=$row['EName']?>">
+                              <div id="editEvent<?=$row["EventID"]?>Help" class="form-text">Enter the event's name.</div>
+                            </div>
+                           <div class="mb-3">
+                              <label for="editEvent<?=$row["EventID"]?>Date" class="form-label">Date</label>
+                              <input type="text" class="form-control" id="editEvent<?=$row["EventID"]?>Date" aria-describedby="editEvent<?=$row["EventID"]?>Help" name="eDate" value="<?=$row['Date']?>">
+                              <div id="editEvent<?=$row["EventID"]?>Help" class="form-text">Enter the event's date.</div>
+                            </div>
+
+
+
+
+
+          <div class="mb-3">
+      <label for="EmployeeList" class="form-label">Employee</label>
+    <select class="form-select" aria-label="Select Employee" id="employeeList" name="eempid" value="<?=$row['EmployeeID']?>">
+    <?php
+        $eventSql = "select * from Employee order by Name";
+        $eventResult = $conn->query($eventSql);
+        while($eventRow = $eventResult->fetch_assoc()) {
+          if ($eventRow['EmployeeID'] == $row['EmployeeID']) {
+            $selText = " selected";
+          } else {
+            $selText = "";
+          }
+    ?>
+      <option value="<?=$eventRow['EmployeeID']?>"<?=$selText?>><?=$eventRow['Name']?></option>
+    <?php
+        }
+    ?>
+            </select>
+      </div>
+
+                            <input type="hidden" name="eid" value="<?=$row['EventID']?>">
+                            <input type="hidden" name="saveType" value="Edit">
+                            <input type="submit" class="btn btn-primary" value="Submit">
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
                 </td>
  <td>
               <form method="post" action="">
@@ -96,72 +151,9 @@ $conn->close();
 ?>
       </tbody>
     </table>
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addEvent">
-        New Event
-      </button>
-
-      <!-- Modal -->
-      <div class="modal fade" id="addEvent" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="addEventLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h1 class="modal-title fs-5" id="addEventLabel">Add Event</h1>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <form method="post" action="">
-                <div class="mb-3">
-    <label for="EName" class="form-label"> Event Name</label>
-    <input type="text" class="form-control" id="name" aria-describedby="nameHelp" name="eName">
-    <div id="nameHelp" class="form-text">Enter the Event's name</div>
-  </div>
-    
-       <div class="mb-3">
-    <label for="Date" class="form-label">Date</label>
-    <input type="text" class="form-control" id="date" aria-describedby="nameHelp" name="eDate">
-    <div id="nameHelp" class="form-text">Enter the event's date</div>
-        
-        
-  <div class="mb-3">
-  <label for="EmployeeList" class="form-label">Which Employee will be in charge of this event</label>
-<select class="form-select" aria-label="Select Employee" id="employeeList" name="eEmpID" value="<?=$row['EmployeeID']?>">
-<?php
-    $eventSql = "select * from Employee order by Name";
-    $eventResult = $conn->query($eventSql);
-    while($eventRow = $eventResult->fetch_assoc()) {
-      if ($eventRow['EmployeeID'] == $row['EmployeeID']) {
-        $selText = " selected";
-      } else {
-        $selText = "";
-      }
-?>
-  <option value="<?=$eventRow['EmployeeID']?>"<?=$selText?>><?=$eventRow['Name']?></option>
-<?php
-    }
-?>
-        </select>
-  
-   
-  </div>
-               
-                <input type="hidden" name="saveType" value="Add">
-                <button type="submit" class="btn btn-primary">Submit</button>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
 
 
 
-
-
-
-          <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
-
-
-</body>
 
 
 
