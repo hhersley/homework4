@@ -178,25 +178,7 @@ $conn->close();
        </div>
      
      
-        <div class="mb-3">
-                            <label for="EmployeeList" class="form-label">Employee</label>
-                            <select class="form-select" aria-label="Select Employee" id="employeeList" name="eempid" value="<?=$row['EmployeeID']?>">
-                          <?php
-                              $eventSql = "select * from Employee order by Name";
-                              $eventResult = $conn->query($eventSql);
-                              while($eventRow = $eventResult->fetch_assoc()) {
-                                if ($eventRow['EmployeeID'] == $row['EmployeeID']) {
-                                  $selText = " selected";
-                                } else {
-                                  $selText = "";
-                                }
-                         ?>
-                               <option value="<?=$eventRow['EmployeeID']?>"<?=$selText?>><?=$eventRow['Name']?></option>
-                         <?php
-                              }
-                         ?>
-                           </select>
-                       </div>
+       
      
    
      
