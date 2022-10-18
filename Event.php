@@ -1,4 +1,4 @@
- <?php require_once('header.php'); ?>
+  <?php require_once('header.php'); ?>
 
 
 
@@ -73,9 +73,9 @@ if ($result->num_rows > 0) {
   <tr>
     <td><?=$row["EventID"]?></td>
     <td><?=$row["EName"]?></td>
-    <td><?=$row["Date"]?></td>
-    <td><?=$row["Name"]?></td>
-    <td>
+     <td><?=$row["Date"]?></td>
+     <td><?=$row["Name"]?></td>
+ <td>
               <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#editEvent<?=$row["EventID"]?>">
                 Edit
               </button>
@@ -97,26 +97,31 @@ if ($result->num_rows > 0) {
                           <label for="editEvent<?=$row["EventID"]?>Date" class="form-label">Date</label>
                           <input type="text" class="form-control" id="editEvent<?=$row["EventID"]?>Date" aria-describedby="editEvent<?=$row["EventID"]?>Help" name="eDate" value="<?=$row['Date']?>">
                           <div id="editEvent<?=$row["EventID"]?>Help" class="form-text">Enter the event's date.</div>
-                       </div>             
-                       <div class="mb-3">
-                           <label for="EmployeeList" class="form-label">Employee</label>
-                           <select class="form-select" aria-label="Select Employee" id="employeeList" name="eempid" value="<?=$row['EmployeeID']?>">
-                           <?php
-                                $eventSql = "select * from Employee order by Name";
-                                $eventResult = $conn->query($eventSql);
-                                while($eventRow = $eventResult->fetch_assoc()) {
-                                if ($eventRow['EmployeeID'] == $row['EmployeeID']) {
-                                $selText = " selected";
-                                } else {
-                                $selText = "";
-                                }
-                                ?>
-
-                                <option value="<?=$eventRow['EmployeeID']?>"<?=$selText?>><?=$eventRow['Name']?></option>
-                             
-                           ?>
-                           </select>
-                       </div>
+                        </div>
+                       
+                       
+                       
+                       
+              
+      <div class="mb-3">
+  <label for="EmployeeList" class="form-label">Employee</label>
+<select class="form-select" aria-label="Select Employee" id="employeeList" name="eempid" value="<?=$row['EmployeeID']?>">
+<?php
+    $eventSql = "select * from Employee order by Name";
+    $eventResult = $conn->query($eventSql);
+    while($eventRow = $eventResult->fetch_assoc()) {
+      if ($eventRow['EmployeeID'] == $row['EmployeeID']) {
+        $selText = " selected";
+      } else {
+        $selText = "";
+      }
+?>
+  <option value="<?=$eventRow['EmployeeID']?>"<?=$selText?>><?=$eventRow['Name']?></option>
+<?php
+    }
+?>
+        </select>
+  </div>
                       
                         <input type="hidden" name="eid" value="<?=$row['EventID']?>">
                         <input type="hidden" name="saveType" value="Edit">
@@ -126,14 +131,14 @@ if ($result->num_rows > 0) {
                   </div>
                 </div>
               </div>
-    </td>
-    <td>
+            </td>
+ <td>
               <form method="post" action="">
                 <input type="hidden" name="eid" value="<?=$row["EventID"]?>" />
                 <input type="hidden" name="saveType" value="Delete">
                 <input type="submit" class="btn" onclick="return confirm('Are you sure?')" value="Delete">
               </form>
-    </td>
+            </td>
 
   </tr>
 <?php
@@ -157,9 +162,9 @@ $conn->close();
               <h1 class="modal-title fs-5" id="addEventLabel">Add Event</h1>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-          <div class="modal-body">
+            <div class="modal-body">
               <form method="post" action="">
-          <div class="mb-3">
+                <div class="mb-3">
     <label for="EName" class="form-label"> Event Name</label>
     <input type="text" class="form-control" id="name" aria-describedby="nameHelp" name="eName">
     <div id="nameHelp" class="form-text">Enter the Event's name</div>
@@ -183,9 +188,9 @@ $conn->close();
       } else {
         $selText = "";
       }
-
+?>
   <option value="<?=$eventRow['EmployeeID']?>"<?=$selText?>><?=$eventRow['Name']?></option>
-
+<?php
     }
 ?>
         </select>
@@ -204,6 +209,13 @@ $conn->close();
 
 
 
+
+
+
+          <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+
+
+</body>
 
 
 
