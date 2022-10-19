@@ -179,10 +179,9 @@ $conn->close();
      
      
        
-                   
-                     <div class="mb-3">
+                  <div class="mb-3">
                             <label for="EmployeeList" class="form-label">Employee</label>
-                            <select class="form-select" aria-label="Select Employee" id="employeeList" name="eempid" >
+                            <select class="form-select" aria-label="Select Employee" id="employeeList" name="eempid" value="<?=$row['EmployeeID']?>">
                           <?php
                               $eventSql = "select * from Employee order by Name";
                               $eventResult = $conn->query($eventSql);
@@ -192,13 +191,11 @@ $conn->close();
                                 } else {
                                   $selText = "";
                                 }
-                         ?>
-                               <option value="<?=$eventRow['EmployeeID']?>"</option>
-                         <?php
+                       "<option value=".$eventRow['EmployeeID']."></option>"
                               }
                          ?>
                            </select>
-       </div>
+                       </div>
 
                 <input type="hidden" name="saveType" value="Add">
                 <button type="submit" class="btn btn-primary">Submit</button>
