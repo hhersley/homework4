@@ -189,7 +189,7 @@ $conn->close();
                          ?>
                                <option value="<?=$eventRow['EmployeeID']?>"<?=$selText?>><?=$eventRow['Name']?></option>
                          <?php
-                              }
+                              
                          ?>
                            </select>
                        </div>
