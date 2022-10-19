@@ -188,9 +188,7 @@ $conn->close();
                               $eventResult = $conn->query($eventSql);
                               while($eventRow = $eventResult->fetch_assoc()) {
                               
-                         ?>
-                               <option value="<?=$eventRow['EmployeeID']?>"</option>
-                         <?php
+                    
                               }
                          ?>
                            </select>
