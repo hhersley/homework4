@@ -36,7 +36,13 @@ if ($conn->connect_error) {
    
      if ($_SERVER["REQUEST_METHOD"] == "POST") {
   switch ($_POST['saveType']) {
-
+  case 'Add':
+      $sqlAdd = "insert into Menu (Item, Price, EventID) value (?, ?, ?)";
+      $stmtAdd = $conn->prepare($sqlAdd);
+    $stmtAdd->bind_param("ssi", $_POST['mItem'], $_POST['mPrice'], $_POST['mid']);
+    $stmtAdd->execute();
+      echo '<div class="alert alert-success" role="alert">New Event added.</div>';
+      break;
     case 'Edit':
       $sqlEdit = "update Menu set Item=?, Price=?, EventID=? where FoodID=?";
       $stmtEdit = $conn->prepare($sqlEdit);
@@ -150,11 +156,69 @@ if ($result->num_rows > 0) {
 } else {
   echo "0 results";
 }
-$conn->close();
 ?>
       </tbody>
     </table>
-     <a href="https://homework4.hahersley.oucreate.com/MenuItemADD.php" class="btn btn-primary">New Item</a>
+
+
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addItem">
+        New Menu Item
+      </button>
+      <!-- Modal -->
+      <div class="modal fade" id="addItem" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="addItemLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="addItemLabel">Add Item</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+<div class="modal-body">
+   <form method="post" action="">
+       <div class="mb-3">
+               <label for="Item" class="form-label">Item</label>
+               <input type="text" class="form-control" id="item" aria-describedby="nameHelp" name="mItem">
+               <div id="nameHelp" class="form-text">Enter the item's name</div>
+       </div>
+
+       <div class="mb-3">
+               <label for="Price" class="form-label">Price</label>
+               <input type="text" class="form-control" id="price" aria-describedby="nameHelp" name="mPrice">
+               <div id="nameHelp" class="form-text">Enter the item's price</div>
+       </div>
+     
+     
+       
+             
+                 <div class="mb-3">
+                            <label for="EventList" class="form-label">Event</label>
+                            <select class="form-select" aria-label="Select Event" id="eventList" name="mid" >
+                          <?php
+                              $menuaddSql = "select * from Event order by EName";
+                              $menuaddResult = $conn->query($menuaddSql);
+                              while($menuaddRow = $menuaddResult->fetch_assoc()) {
+                         ?>
+                               <option value="<?=$menuaddRow['EventID']?>"><?=$menuaddRow['EName']?></option>
+                         <?php
+                              }
+                         ?>
+                           </select>
+                       </div>
+
+
+                <input type="hidden" name="saveType" value="Add">
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+<?
+$conn->close();
+?>
        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 
    
