@@ -199,6 +199,7 @@ $conn->close();
 
                 <input type="hidden" name="saveType" value="Add">
                 <button type="submit" class="btn btn-primary">Submit</button>
+     </input>
               </form>
             </div>
           </div>
