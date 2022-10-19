@@ -180,12 +180,23 @@ $conn->close();
      
        
              
-                      <div class="mb-3">
+                 <div class="mb-3">
                             <label for="EmployeeList" class="form-label">Employee</label>
                             <select class="form-select" aria-label="Select Employee" id="employeeList" name="eempid" value="<?=$row['EmployeeID']?>">
                           <?php
-                              $eventSql = "select * from Employee order by Name";
-                                    ?>
+                              $eventaddSql = "select * from Employee order by Name";
+                              $eventaddResult = $conn->query($eventaddSql);
+                              while($eventaddRow = $eventaddResult->fetch_assoc()) {
+                                if ($eventaddRow['EmployeeID'] == $row['EmployeeID']) {
+                                  $selText = " selected";
+                                } else {
+                                  $selText = "";
+                                }
+                         ?>
+                               <option value="<?=$eventaddRow['EmployeeID']?>"<?=$selText?>><?=$eventaddRow['Name']?></option>
+                         <?php
+                              }
+                         ?>
                            </select>
                        </div>
 
