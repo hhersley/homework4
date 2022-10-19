@@ -39,7 +39,7 @@ if ($conn->connect_error) {
   case 'Add':
       $sqlAdd = "insert into Menu (Item, Price, EventID) value (?, ?, ?)";
       $stmtAdd = $conn->prepare($sqlAdd);
-    $stmtAdd->bind_param("ssi", $_POST['mItem'], $_POST['mPrice'], $_POST['mid']);
+    $stmtAdd->bind_param("ssi", $_POST['mItem'], $_POST['mPrice'], $_POST['eid']);
     $stmtAdd->execute();
       echo '<div class="alert alert-success" role="alert">New Event added.</div>';
       break;
@@ -191,7 +191,7 @@ if ($result->num_rows > 0) {
              
                  <div class="mb-3">
                             <label for="EventList" class="form-label">Event</label>
-                            <select class="form-select" aria-label="Select Event" id="eventList" name="mid" >
+                            <select class="form-select" aria-label="Select Event" id="eventList" name="eid" >
                           <?php
                               $menuaddSql = "select * from Event order by EName";
                               $menuaddResult = $conn->query($menuaddSql);
