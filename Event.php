@@ -186,11 +186,11 @@ $conn->close();
 
                        
 
-                       <option value="red"></option>
+                       <option value="red">red</option>
 
-                       <option value="red"></option>
+                       <option value="red">red</option>
 
-                       <option value="red"></option>
+                       <option value="red">red</option>
 
  
 
