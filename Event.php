@@ -190,9 +190,9 @@ $conn->close();
 
                             while($eventRow = $eventResult->fetch_assoc()) {
 
-                                "<option value=".$eventRow['EmployeeID']."></option>"
+                                "<option value=".$eventRow['EmployeeID']."></option>"}
 
-                            }
+                            
 
                        ?>
                            </select>
