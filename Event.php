@@ -184,7 +184,16 @@ $conn->close();
                             <select class="form-select" aria-label="Select Employee" id="employeeList" name="eempid" value="<?=$row['EmployeeID']?>">
                           <?php
                               $eventSql = "select * from Employee order by Name";
-                                    ?>
+                              $eventResult = $conn->query($eventSql);
+                              while($eventRow = $eventResult->fetch_assoc()) {
+                               
+                                  $selText = "";
+                                
+                         ?>
+                               <option value="<?=$eventRow['EmployeeID']?>"<?=$selText?>><?=$eventRow['Name']?></option>
+                         <?php
+                              }
+                         ?>
                            </select>
                        </div>
      
