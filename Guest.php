@@ -14,6 +14,7 @@
       <th>Name</th>
       <th>Email</th>
      <th>Room</th>
+     <th>Event</th>
      <th></th>
     
     </tr>
@@ -35,16 +36,16 @@ if ($conn->connect_error) {
    if ($_SERVER["REQUEST_METHOD"] == "POST") {
   switch ($_POST['saveType']) {
    case 'Add':
-      $sqlAdd = "insert into Guest (Name, Email, Room) value (?, ?, ?)";
+      $sqlAdd = "insert into Guest (Name, Email, Room, EventID) value (?, ?, ?)";
       $stmtAdd = $conn->prepare($sqlAdd);
-    $stmtAdd->bind_param("ssi", $_POST['gName'], $_POST['gEmail'], $_POST['gRoom']);
+    $stmtAdd->bind_param("ssi", $_POST['gName'], $_POST['gEmail'], $_POST['gRoom'], $_POST['eid']);
     $stmtAdd->execute();
       echo '<div class="alert alert-success" role="alert">New Guest added.</div>';
       break;
     case 'Edit':
-      $sqlEdit = "update Guest set Name=?, Email=?, Room=? where GuestID=?";
+      $sqlEdit = "update Guest set Name=?, Email=?, Room=?, EventID=? where GuestID=?";
       $stmtEdit = $conn->prepare($sqlEdit);
-      $stmtEdit->bind_param("ssii", $_POST['gName'], $_POST['gEmail'], $_POST['gRoom'], $_POST['gid']);
+      $stmtEdit->bind_param("ssiii", $_POST['gName'], $_POST['gEmail'], $_POST['gRoom'], $_POST['eid'], $_POST['gid']);
       $stmtEdit->execute();
       echo '<div class="alert alert-success" role="alert">Guest edited.</div>';
       break;
@@ -61,7 +62,7 @@ if ($conn->connect_error) {
    
    
    
-$sql = "SELECT GuestID, Name, Email, Room from Guest";
+$sql = "SELECT GuestID, Name, Email, Room, EventID, EName from Guest G Join Event E on G.EventID = E.EventID";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
@@ -73,6 +74,8 @@ if ($result->num_rows > 0) {
     <td><?=$row["Name"]?></td>
     <td><?=$row["Email"]?></td>
        <td><?=$row["Room"]?></td>
+          <td><?=$row["EName"]?></td>
+
     <td>
               <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#editGuest<?=$row["GuestID"]?>">
                 Edit
@@ -101,6 +104,34 @@ if ($result->num_rows > 0) {
                           <input type="text" class="form-control" id="editGuest<?=$row["GuestID"]?>Room" aria-describedby="editGuest<?=$row["GuestID"]?>Help" name="gRoom" value="<?=$row['Room']?>">
                           <div id="editGuest<?=$row["GuestID"]?>Help" class="form-text">Enter the guest's room number.</div>
                         </div>
+                       
+                           </div>
+  <div class="mb-3">
+  <label for="EventList" class="form-label">Event</label>
+<select class="form-select" aria-label="Select Event" id="eventList" name="eid" value="<?=$row['EventID']?>">
+<?php
+    $eventSql = "select EName, EventID from Event order by EName";
+    $eventResult = $conn->query($eventSql);
+    while($eventRow = $eventResult->fetch_assoc()) {
+      if ($eventRow['EventID'] == $row['EventID']) {
+        $selText = " selected";
+      } else {
+        $selText = "";
+      }
+?>
+  <option value="<?=$eventRow['EventID']?>"<?=$selText?>><?=$eventRow['EName']?></option>
+<?php
+    }
+?>
+  
+  
+  
+        </select>
+  
+   
+
+  </div>
+           
                         <input type="hidden" name="gid" value="<?=$row['GuestID']?>">
                         <input type="hidden" name="saveType" value="Edit">
                         <input type="submit" class="btn btn-primary" value="Submit">
@@ -162,6 +193,25 @@ $conn->close();
     <input type="text" class="form-control" id="room" aria-describedby="nameHelp" name="gRoom">
     <div id="nameHelp" class="form-text">Enter the guest's room number</div>
   </div>
+               
+                 
+               
+                       <div class="mb-3">
+                            <label for="EventList" class="form-label">Event</label>
+                            <select class="form-select" aria-label="Select Event" id="eventList" name="eid" >
+                          <?php
+                              $guestaddSql = "select * from Event order by EName";
+                              $guestaddResult = $conn->query($guestaddSql);
+                              while($menuaddRow = $menuaddResult->fetch_assoc()) {
+                         ?>
+                               <option value="<?=$guestaddRow['EventID']?>"><?=$guestaddRow['EName']?></option>
+                         <?php
+                              }
+                         ?>
+                           </select>
+                       </div>
+               
+               
                
                 <input type="hidden" name="saveType" value="Add">
                 <button type="submit" class="btn btn-primary">Submit</button>
