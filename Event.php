@@ -187,13 +187,8 @@ $conn->close();
                               $eventaddSql = "select * from Employee order by Name";
                               $eventaddResult = $conn->query($eventaddSql);
                               while($eventaddRow = $eventaddResult->fetch_assoc()) {
-                                if ($eventaddRow['EmployeeID'] == $row['EmployeeID']) {
-                                  $selText = " selected";
-                                } else {
-                                  $selText = "";
-                                }
                          ?>
-                               <option value="<?=$eventaddRow['EmployeeID']?>"<?=$selText?>><?=$eventaddRow['Name']?></option>
+                               <option value="<?=$eventaddRow['EmployeeID']?>"><?=$eventaddRow['Name']?></option>
                          <?php
                               }
                          ?>
