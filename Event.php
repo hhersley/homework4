@@ -179,23 +179,33 @@ $conn->close();
      
      
        
-                  <div class="mb-3">
-                             <label for="EmployeeList" class="form-label">Employee</label>
+               <div class="mb-3">
+
+                          <label for="EmployeeList" class="form-label">Employee</label>
 
                           <select class="form-select" aria-label="Select Employee" id="employeeList" name="eempid" value="<?=$row['EmployeeID']?>">
 
-                       
+                         
 
-                       <option value="red">1</option>
+                          <?php
 
-                       <option value="red">2</option>
+                            $eventSql = "select * from Employee order by Name";
 
-                       <option value="red">2</option>
+                            $eventResult = $conn->query($eventSql);
+
+                            while($eventRow = $eventResult->fetch_assoc()) {
+
+                                echo "<option value=".$eventRow['EmployeeID']."></option>";
+
+                            }
+
+                            ?>
 
  
 
                          </select>
-                       </div>
+                 
+     </div>
 
                 <input type="hidden" name="saveType" value="Add">
                 <button type="submit" class="btn btn-primary">Submit</button>
