@@ -192,7 +192,7 @@ $conn->close();
                                   $selText = "";
                                 }
                        "<option value=".$eventRow['EmployeeID']."></option>"
-                              
+                                }
                          ?>
                            </select>
                        </div>
