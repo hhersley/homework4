@@ -180,22 +180,21 @@ $conn->close();
      
        
                   <div class="mb-3">
-                            <label for="EmployeeList" class="form-label">Employee</label>
-                            <select class="form-select" aria-label="Select Employee" id="employeeList" name="eempid" value="<?=$row['EmployeeID']?>">
-                        <?php
+                             <label for="EmployeeList" class="form-label">Employee</label>
 
-                            $eventSql = "select * from Employee order by Name";
+                          <select class="form-select" aria-label="Select Employee" id="employeeList" name="eempid" value="<?=$row['EmployeeID']?>">
 
-                            $eventResult = $conn->query($eventSql);
+                       
 
-                            while($eventRow = $eventResult->fetch_assoc()) {
+                       <option value="red"></option>
 
-                                "<option value=".$eventRow['EmployeeID']."></option>"}
+                       <option value="red"></option>
 
-                            
+                       <option value="red"></option>
 
-                       ?>
-                           </select>
+ 
+
+                         </select>
                        </div>
 
                 <input type="hidden" name="saveType" value="Add">
