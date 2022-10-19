@@ -62,7 +62,7 @@ if ($conn->connect_error) {
    
    
    
-$sql = "SELECT GuestID, Name, Email, Room, EventID, EName from Guest G Join Event E on G.EventID = E.EventID";
+$sql = "SELECT GuestID, Name, Email, Room, E.EventID, EName from Guest G Join Event E on G.EventID = E.EventID";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
