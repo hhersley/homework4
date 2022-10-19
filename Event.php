@@ -179,22 +179,7 @@ $conn->close();
      
      
        
-                          <div class="mb-3">
-                            <label for="EmployeeList" class="form-label">Employee</label>
-                            <select class="form-select" aria-label="Select Employee" id="employeeList" name="eempid" value="<?=$row['EmployeeID']?>">
-                          <?php
-                            
-                         ?>
-                               <option value="red"></option>
-                                                             <option value="blue"></option>
-
-                              
-                         <?php
-                              }
-                         ?>
-                           </select>
-                       </div>
-   
+                     
      
    
                 <input type="hidden" name="saveType" value="Add">
