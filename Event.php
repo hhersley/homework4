@@ -182,7 +182,7 @@ $conn->close();
              
                  <div class="mb-3">
                             <label for="EmployeeList" class="form-label">Employee</label>
-                            <select class="form-select" aria-label="Select Employee" id="employeeList" name="eempid" value="<?=$row['EmployeeID']?>">
+                            <select class="form-select" aria-label="Select Employee" id="employeeList" name="eempid" >
                           <?php
                               $eventaddSql = "select * from Employee order by Name";
                               $eventaddResult = $conn->query($eventaddSql);
