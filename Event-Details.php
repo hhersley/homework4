@@ -39,7 +39,7 @@ if ($conn->connect_error) {
       $stmtAdd = $conn->prepare($sqlAdd);
     $stmtAdd->bind_param("ssi", $_POST['mItem'], $_POST['mPrice'], $_POST['eid']);
     $stmtAdd->execute();
-      echo '<div class="alert alert-success" role="alert">New Event added.</div>';
+      echo '<div class="alert alert-success" role="alert">New Item added.</div>';
       break;
     case 'Edit':
       $sqlEdit = "update Menu set Item=?, Price=?, EventID=? where FoodID=?";
