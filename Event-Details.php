@@ -6,6 +6,7 @@
     
 <table class="table table-striped">
   <thead>
+   
     <tr>
             <th> Food ID </th>
             <th> Item </th>
@@ -108,8 +109,7 @@ if ($result->num_rows > 0) {
 ?>
       </tbody>
     </table>
-      <h1> Details for <?=$row["EName"]?></h1>
-    <h2> This event will be managed by <?=$row["Name"]?></h2>
+     
     
     <?
       $conn->close();
