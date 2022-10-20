@@ -3,7 +3,21 @@
 
 
   <body>
+      <h1> Details for <?=$row["EName"]?></h1>
+    <h2> This event will be managed by <?=$row["Name"]?></h2>
+<table class="table table-striped">
+  <thead>
+    <tr>
+            <th> Food ID </th>
+            <th> Item </th>
+            <th> Item </th>
+
+      
+     <th></th>
+     <th></th>
     
+    </tr>
+  </thead>
 
     <?php
 $servername = "localhost";
@@ -58,31 +72,16 @@ $sql = "SELECT E.EventID, EName, Item, Price, P.EmployeeID, Name, FoodID  from M
     $result = $stmt->get_result();
     
 if ($result->num_rows > 0) {
-  ?>
+  
     
-   <h1> Details for <?=$row["EName"]?></h1>
-    <h2> This event will be managed by <?=$row["Name"]?></h2>
-    <?
+   
+    
   // output data of each row
   while($row = $result->fetch_assoc()) {
 ?>
     
     
-    <h1> Details for <?=$row["EName"]?></h1>
-    <h2> This event will be managed by <?=$row["Name"]?></h2>
-<table class="table table-striped">
-  <thead>
-    <tr>
-            <th> Food ID </th>
-            <th> Item </th>
-            <th> Item </th>
-
-      
-     <th></th>
-     <th></th>
-    
-    </tr>
-  </thead>
+  
   <tbody>
     
       <tr>
