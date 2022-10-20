@@ -49,12 +49,20 @@ if ($conn->connect_error) {
 
    
 $sql = "SELECT E.EventID, EName, Item, Price, P.EmployeeID, Name, FoodID  from Menu M Join Event E on M.EventID=E.EventID Join Employee P on E.EmployeeID = P.EmployeeID where E.EventID=?";
+ 
+    
+    
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("i", $eid);
     $stmt->execute();
     $result = $stmt->get_result();
     
 if ($result->num_rows > 0) {
+  ?>
+    
+   <h1> Details for <?=$row["EName"]?></h1>
+    <h2> This event will be managed by <?=$row["Name"]?></h2>
+    <?
   // output data of each row
   while($row = $result->fetch_assoc()) {
 ?>
