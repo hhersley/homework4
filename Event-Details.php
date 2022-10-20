@@ -156,15 +156,48 @@ if ($result->num_rows > 0) {
   echo "0 results";
 }
   
-  
-  
-    
 
 ?>
       </tbody>
     </table>
      
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addItem">
+        New Menu Item for <?=$row["EName"]?>
+      </button>
+      <!-- Modal -->
+      <div class="modal fade" id="addItem" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="addItemLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="addItemLabel">Add Item</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+<div class="modal-body">
+   <form method="post" action="">
+       <div class="mb-3">
+               <label for="Item" class="form-label">Item</label>
+               <input type="text" class="form-control" id="item" aria-describedby="nameHelp" name="mItem">
+               <div id="nameHelp" class="form-text">Enter the item's name</div>
+       </div>
+
+       <div class="mb-3">
+               <label for="Price" class="form-label">Price</label>
+               <input type="text" class="form-control" id="price" aria-describedby="nameHelp" name="mPrice">
+               <div id="nameHelp" class="form-text">Enter the item's price</div>
+       </div>
+                <input type="hidden" name="eid" value="<?=$row['EventID']?>">
+                <input type="hidden" name="saveType" value="Add">
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     
+<h1>Details for <?=$row["EName"]?></h1>
+<h2>Managed by <?=$row["Name"]?></h2>
+
     <?
       $conn->close();
 ?>
