@@ -34,26 +34,26 @@ if ($conn->connect_error) {
 
       if ($_SERVER["REQUEST_METHOD"] == "POST") {
   switch ($_POST['saveType']) {
-  case 'Add':
-      $sqlAdd = "insert into Event (EName, Date, EmployeeID) value (?, ?, ?)";
+ case 'Add':
+      $sqlAdd = "insert into Menu (Item, Price, EventID) value (?, ?, ?)";
       $stmtAdd = $conn->prepare($sqlAdd);
-    $stmtAdd->bind_param("ssi", $_POST['eName'], $_POST['eDate'], $_POST['eempid']);
+    $stmtAdd->bind_param("ssi", $_POST['mItem'], $_POST['mPrice'], $_POST['eid']);
     $stmtAdd->execute();
       echo '<div class="alert alert-success" role="alert">New Event added.</div>';
       break;
     case 'Edit':
-      $sqlEdit = "update Event set EName=?, Date=?, EmployeeID=? where EventID=?";
+      $sqlEdit = "update Menu set Item=?, Price=?, EventID=? where FoodID=?";
       $stmtEdit = $conn->prepare($sqlEdit);
-      $stmtEdit->bind_param("ssii", $_POST['eName'], $_POST['eDate'], $_POST['eempid'], $_POST['eid']);
+      $stmtEdit->bind_param("ssii", $_POST['mItem'], $_POST['mPrice'], $_POST['eid'], $_POST['mid']);
       $stmtEdit->execute();
-      echo '<div class="alert alert-success" role="alert">Event edited.</div>';
+      echo '<div class="alert alert-success" role="alert">Menu item edited.</div>';
       break;
     case 'Delete':
-      $sqlDelete = "delete from Event where EventID=?";
+      $sqlDelete = "delete from Menu where FoodID=?";
       $stmtDelete = $conn->prepare($sqlDelete);
-      $stmtDelete->bind_param("i", $_POST['eid']);
+      $stmtDelete->bind_param("i", $_POST['mid']);
       $stmtDelete->execute();
-      echo '<div class="alert alert-success" role="alert">Event deleted.</div>';
+      echo '<div class="alert alert-success" role="alert">Menu item deleted.</div>';
       break;
   }
 }
@@ -90,6 +90,58 @@ if ($result->num_rows > 0) {
     <td><?=$row["FoodID"]?></td>
     <td><?=$row["Item"]?></td>
        <td>$<?=$row["Price"]?></td>
+ <td>
+              <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#editMenu<?=$row["FoodID"]?>">
+                Edit
+              </button>
+              <div class="modal fade" id="editMenu<?=$row["FoodID"]?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="editMenu<?=$row["FoodID"]?>Label" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h1 class="modal-title fs-5" id="editMenu<?=$row["FoodID"]?>Label">Edit Menu</h1>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <form method="post" action="">
+                        <div class="mb-3">
+                          <label for="editMenu<?=$row["FoodID"]?>Item" class="form-label">Item</label>
+                          <input type="text" class="form-control" id="editMenu<?=$row["FoodID"]?>Item" aria-describedby="editMenu<?=$row["FoodID"]?>Help" name="mItem" value="<?=$row['Item']?>">
+                          <div id="editMenu<?=$row["FoodID"]?>Help" class="form-text">Enter the item's name.</div>
+                        </div>
+                         
+ <div class="mb-3">
+                          <label for="editMenu<?=$row["FoodID"]?>Price" class="form-label">Price</label>
+                          <input type="text" class="form-control" id="editMenu<?=$row["FoodID"]?>Price" aria-describedby="editMenu<?=$row["FoodID"]?>Help" name="mPrice" value="<?=$row['Price']?>">
+                          <div id="editMenu<?=$row["FoodID"]?>Help" class="form-text">Enter the item's Price.</div>
+                       
+                       
+               
+                      
+                        <input type="hidden" name="mid" value="<?=$row['FoodID']?>">
+                           <input type="hidden" name="eid" value="<?=$row['EventID']?>">
+
+                        <input type="hidden" name="saveType" value="Edit">
+                        <input type="submit" class="btn btn-primary" value="Submit">
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </td>
+ <td>                    
+                     
+                 <form method="post" action="">
+                <input type="hidden" name="mid" value="<?=$row["FoodID"]?>" />
+                <input type="hidden" name="saveType" value="Delete">
+                <input type="submit" class="btn" onclick="return confirm('Are you sure?')" value="Delete">
+              </form>
+            </td>
+
+  </tr>   
+                     
+                     
+                     
+                     
 
    
   </tr>   
