@@ -72,7 +72,7 @@ if ($result->num_rows > 0) {
 ?>
   <tr>
     <td><?=$row["EventID"]?></td>
-    <td><?=$row["EName"]?></td>
+    <td><a href="Event-Details.php?id=<?=$row["EventID"]?>"><?=$row["EName"]?></a></td>
      <td><?=$row["Date"]?></td>
      <td><?=$row["Name"]?></td>
      <td>
