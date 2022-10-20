@@ -81,8 +81,8 @@ if ($result->num_rows > 0) {
 ?>
     
     
-     <h1> Details for <?=$row["EName"]?></h1>
-    <h2> This event will be managed by <?=$row["Name"]?></h2>
+     <h1> Details for <?["EName"]?></h1>
+    <h2> This event will be managed by <["Name"]?></h2>
   
   <tbody>
     
@@ -162,7 +162,7 @@ if ($result->num_rows > 0) {
     </table>
      
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addItem">
-        New Menu Item for <?=$row["EName"]?>
+        New Menu Item for <?["EName"]?>
       </button>
       <!-- Modal -->
       <div class="modal fade" id="addItem" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="addItemLabel" aria-hidden="true">
@@ -195,9 +195,6 @@ if ($result->num_rows > 0) {
       </div>
     </div>
     
-<h1>Details for <?=$row["EName"]?></h1>
-<h2>Managed by <?=$row["Name"]?></h2>
-
     <?
       $conn->close();
 ?>
