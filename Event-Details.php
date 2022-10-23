@@ -60,6 +60,7 @@ if ($conn->connect_error) {
     
     
    $eid = $_GET['id'];
+  echo"the id is " .$eid;
 
    
 $sql = "SELECT E.EventID, EName, Item, Price, P.EmployeeID, Name, FoodID  from Menu M Join Event E on M.EventID=E.EventID Join Employee P on E.EmployeeID = P.EmployeeID where E.EventID=?";
