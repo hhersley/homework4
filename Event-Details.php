@@ -116,7 +116,7 @@ if ($result->num_rows > 0) {
                        
                
                         <input type="hidden" name="mid" value="<?=$row['FoodID']?>">
-                           <input type="hidden" name="eid" value=$eid>
+                           <input type="hidden" name="eid" value="<?=$eid ?>">
 
                         <input type="hidden" name="saveType" value="Edit">
                         <input type="submit" class="btn btn-primary" value="Submit">
