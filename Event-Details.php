@@ -114,7 +114,7 @@ if ($result->num_rows > 0) {
                
                       
                         <input type="hidden" name="mid" value="<?=$row['FoodID']?>">
-                           <input type="hidden" name="eid" value=$eid>
+                           <input type="hidden" name="eid" value=2>
 
                         <input type="hidden" name="saveType" value="Edit">
                         <input type="submit" class="btn btn-primary" value="Submit">
@@ -127,6 +127,7 @@ if ($result->num_rows > 0) {
  <td>                    
                      
                  <form method="post" action="">
+
                 <input type="hidden" name="mid" value="<?=$row["FoodID"]?>" />
                 <input type="hidden" name="saveType" value="Delete">
                 <input type="submit" class="btn" onclick="return confirm('Are you sure?')" value="Delete">
