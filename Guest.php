@@ -201,7 +201,7 @@ if ($result->num_rows > 0) {
                           <?php
                               $guestaddSql = "select * from Event order by EName";
                               $guestaddResult = $conn->query($guestaddSql);
-                              while($menuaddRow = $menuaddResult->fetch_assoc()) {
+                              while($guestaddRow = $guestaddResult->fetch_assoc()) {
                          ?>
                                <option value="<?=$guestaddRow['EventID']?>"><?=$guestaddRow['EName']?></option>
                          <?php
