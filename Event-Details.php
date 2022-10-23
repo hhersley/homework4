@@ -158,6 +158,9 @@ if ($result->num_rows > 0) {
 ?>
       </tbody>
     </table>
+<?
+  echo"the id is " .$eid;
+?>
      
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addItem">
         New Menu Item for <?["EName"]?>
@@ -183,7 +186,7 @@ if ($result->num_rows > 0) {
                <input type="text" class="form-control" id="price" aria-describedby="nameHelp" name="mPrice">
                <div id="nameHelp" class="form-text">Enter the item's price</div>
        </div>
-                <input type="hidden" name="eid" value="<?=$eid ?>">
+                           <input type="hidden" name="eid" value="<?=$eid ?>">
                 <input type="hidden" name="saveType" value="Add">
                 <button type="submit" class="btn btn-primary">Submit</button>
               </form>
