@@ -61,7 +61,6 @@ if ($conn->connect_error) {
     
     
    $eid = $_GET['id'];
-  echo"the id is " .$eid;
 
    
 $sql = "SELECT E.EventID, EName, Item, Price, P.EmployeeID, Name, FoodID  from Menu M Join Event E on M.EventID=E.EventID Join Employee P on E.EmployeeID = P.EmployeeID where E.EventID=?";
@@ -158,9 +157,7 @@ if ($result->num_rows > 0) {
 ?>
       </tbody>
     </table>
-<?
-  echo"the id is " .$eid;
-?>
+
      
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addItem">
         New Menu Item for <?["EName"]?>
