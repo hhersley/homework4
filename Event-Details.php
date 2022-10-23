@@ -33,6 +33,8 @@ if ($conn->connect_error) {
 }
 
       if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        
+        print_R($_POST);
   switch ($_POST['saveType']) {
  case 'Add':
       $sqlAdd = "insert into Menu (Item, Price, EventID) value (?, ?, ?)";
