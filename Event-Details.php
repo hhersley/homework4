@@ -34,7 +34,6 @@ if ($conn->connect_error) {
 
       if ($_SERVER["REQUEST_METHOD"] == "POST") {
         
-        print_R($_POST);
   switch ($_POST['saveType']) {
  case 'Add':
       $sqlAdd = "insert into Menu (Item, Price, EventID) value (?, ?, ?)";
@@ -184,7 +183,7 @@ if ($result->num_rows > 0) {
                <input type="text" class="form-control" id="price" aria-describedby="nameHelp" name="mPrice">
                <div id="nameHelp" class="form-text">Enter the item's price</div>
        </div>
-                <input type="hidden" name="eid" value=$eid>
+                <input type="hidden" name="eid" value="<?=$eid ?>">
                 <input type="hidden" name="saveType" value="Add">
                 <button type="submit" class="btn btn-primary">Submit</button>
               </form>
