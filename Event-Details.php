@@ -157,9 +157,7 @@ if ($result->num_rows > 0) {
 ?>
       </tbody>
     </table>
-<?
-echo "Menu for" .EName;
-  ?>   
+  
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addItem">
         New Menu Item
       </button>
