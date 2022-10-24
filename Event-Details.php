@@ -157,10 +157,11 @@ if ($result->num_rows > 0) {
 ?>
       </tbody>
     </table>
-
-     
+<?
+echo "Menu for" .EName;
+  ?>   
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addItem">
-        New Menu Item for <?["EName"]?>
+        New Menu Item
       </button>
       <!-- Modal -->
       <div class="modal fade" id="addItem" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="addItemLabel" aria-hidden="true">
